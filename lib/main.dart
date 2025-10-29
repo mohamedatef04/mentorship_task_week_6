@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/theme/app_themes.dart';
-import 'package:movies_app/features/splash/presentation/views/splash_view.dart';
+import 'package:movies_app/features/home/presentation/views/home_view.dart';
 
 void main() {
   runApp(const MoviesApp());
@@ -19,7 +19,7 @@ class MoviesApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: AppTheme.getLightTheme(),
-        home: const SplashView(),
+        home: const HomeView(),
       ),
     );
   }
