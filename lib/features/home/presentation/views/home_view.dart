@@ -26,6 +26,7 @@ class HomeView extends StatelessWidget {
                       SearchWidget(
                         hintText: 'Search for a movie',
                       ),
+                      SizedBox(height: 15),
                     ],
                   ),
                 ),

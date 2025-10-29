@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies_app/core/cubits/change_mode_cubit.dart';
+import 'package:movies_app/core/theme/app_themes.dart';
 import 'package:movies_app/core/utils/app_text_styles.dart';
 import 'package:movies_app/core/utils/assets.dart';
 
 class CustomListTile extends StatefulWidget {
-  const CustomListTile({super.key, this.onPressed});
-  final void Function()? onPressed;
+  const CustomListTile({
+    super.key,
+  });
 
   @override
   State<CustomListTile> createState() => _CustomListTileState();
@@ -49,7 +53,14 @@ class _CustomListTileState extends State<CustomListTile> {
           color: Theme.of(context).colorScheme.onSecondaryContainer,
         ),
         child: IconButton(
-          onPressed: widget.onPressed,
+          onPressed: () {
+            final currentTheme = context.read<ChangeModeCubit>().state;
+            context.read<ChangeModeCubit>().changeMode(
+              theme: currentTheme == AppTheme.getLightTheme()
+                  ? AppTheme.getDarkTheme()
+                  : AppTheme.getLightTheme(),
+            );
+          },
           icon: const Icon(
             Icons.light_mode,
             size: 15,

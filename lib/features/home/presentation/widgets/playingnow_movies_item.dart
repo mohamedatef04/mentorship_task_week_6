@@ -65,7 +65,7 @@ class PopularMoviesItem extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.numbers,
-                          color: AppColors.darkOnPrimary,
+                          color: AppColors.secondaryVariant,
                           size: 20.w,
                         ),
                         Text(

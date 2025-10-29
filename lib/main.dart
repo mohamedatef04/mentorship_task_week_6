@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/theme/app_themes.dart';
+import 'package:movies_app/core/cubits/change_mode_cubit.dart';
 import 'package:movies_app/features/home/presentation/views/home_view.dart';
 
 void main() {
@@ -16,10 +17,17 @@ class MoviesApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: AppTheme.getLightTheme(),
-        home: const HomeView(),
+      child: BlocProvider(
+        create: (context) => ChangeModeCubit(),
+        child: BlocBuilder<ChangeModeCubit, ThemeData>(
+          builder: (context, state) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: state,
+              home: const HomeView(),
+            );
+          },
+        ),
       ),
     );
   }
