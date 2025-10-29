@@ -61,8 +61,10 @@ class _CustomListTileState extends State<CustomListTile> {
                   : AppTheme.getLightTheme(),
             );
           },
-          icon: const Icon(
-            Icons.light_mode,
+          icon: Icon(
+            context.read<ChangeModeCubit>().state == AppTheme.getLightTheme()
+                ? Icons.dark_mode
+                : Icons.light_mode,
             size: 15,
           ),
         ),

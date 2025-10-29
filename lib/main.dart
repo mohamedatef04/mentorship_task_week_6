@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/cubits/change_mode_cubit.dart';
-import 'package:movies_app/features/home/presentation/views/home_view.dart';
+import 'package:movies_app/features/splash/presentation/views/splash_view.dart';
 
 void main() {
   runApp(const MoviesApp());
@@ -24,7 +24,7 @@ class MoviesApp extends StatelessWidget {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: state,
-              home: const HomeView(),
+              home: const SplashView(),
             );
           },
         ),
