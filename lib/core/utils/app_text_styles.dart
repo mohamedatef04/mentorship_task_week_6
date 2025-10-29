@@ -5,7 +5,7 @@ abstract class AppTextStyles {
   static TextStyle semiBold28(BuildContext context) {
     final theme = Theme.of(context);
     return TextStyle(
-      color: theme.colorScheme.primary,
+      color: theme.colorScheme.onSurface,
       fontWeight: FontWeight.w600,
       fontSize: 28.sp,
       fontFamily: 'Poppins',
