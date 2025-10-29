@@ -44,9 +44,9 @@ class SearchWidget extends StatelessWidget {
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
 
-        fillColor: Theme.of(context).colorScheme.onPrimary,
+        fillColor: Theme.of(context).colorScheme.onSecondaryContainer,
         filled: true,
-        hintStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15.r),
           borderSide: BorderSide.none,

@@ -46,11 +46,11 @@ class _CustomListTileState extends State<CustomListTile> {
         height: 30.h,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: Theme.of(context).colorScheme.onPrimary,
+          color: Theme.of(context).colorScheme.onSecondaryContainer,
         ),
         child: IconButton(
           onPressed: widget.onPressed,
-          icon: Icon(
+          icon: const Icon(
             Icons.light_mode,
             size: 15,
           ),

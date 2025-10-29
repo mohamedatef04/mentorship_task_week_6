@@ -8,7 +8,7 @@ final ThemeData darkTheme = ThemeData(
     primary: AppColors.darkPrimary,
     onPrimary: AppColors.darkOnPrimary,
     secondary: AppColors.darkSecondary,
-    onSecondary: AppColors.darkOnSecondary,
+    onSecondary: AppColors.darkOnSecondaryContainer,
     surface: AppColors.darkSurface,
     onSurface: AppColors.darkOnSurface,
     error: AppColors.darkError,

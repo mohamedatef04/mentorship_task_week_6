@@ -10,7 +10,7 @@ abstract class AppColors {
   static const Color surface = Color(0xFFF5F5F5);
   static const Color error = Color(0xFFB00020);
   static const Color onPrimary = Color(0xFF92929D);
-  static const Color onSecondary = Color(0xFF000000);
+  static const Color onSecondaryContainer = Color.fromARGB(255, 209, 209, 216);
   static const Color onBackground = Color(0xFF000000);
   static const Color onSurface = Color(0xFF000000);
   static const Color onError = Color(0xFFFFFFFF);
@@ -24,7 +24,7 @@ abstract class AppColors {
   static const Color darkSurface = Color(0xFF121212);
   static const Color darkError = Color(0xFFCF6679);
   static const Color darkOnPrimary = Color(0xFF252836);
-  static const Color darkOnSecondary = Color(0xFF000000);
+  static const Color darkOnSecondaryContainer = Color(0xFF252836);
   static const Color darkOnBackground = Color(0xFFFFFFFF);
   static const Color darkOnSurface = Color(0xFFFFFFFF);
   static const Color darkOnError = Color(0xFF000000);
