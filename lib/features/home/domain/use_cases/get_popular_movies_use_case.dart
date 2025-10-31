@@ -6,6 +6,6 @@ import 'package:movies_app/features/home/domain/repos/home_repo.dart';
 class GetPopularMoviesUseCase {
   final HomeRepo homeRepo;
   GetPopularMoviesUseCase({required this.homeRepo});
-  Future<Either<Failures, List<MovieEntity>>> call() async =>
-      await homeRepo.getPopularMovies();
+  Future<Either<Failures, List<MovieEntity>>> call({required int page}) async =>
+      await homeRepo.getPopularMovies(page: page);
 }

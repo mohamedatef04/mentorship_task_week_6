@@ -8,6 +8,7 @@ import 'package:movies_app/features/home/data/repos/home_repo_impl.dart';
 import 'package:movies_app/features/home/domain/use_cases/get_popular_movies_use_case.dart';
 import 'package:movies_app/features/home/presentation/cubits/get_popular_movies_cubit.dart';
 import 'package:movies_app/features/home/presentation/widgets/custom_list_tile.dart';
+import 'package:movies_app/features/home/presentation/widgets/pagination_widget.dart';
 import 'package:movies_app/features/home/presentation/widgets/popular_movies_list.dart';
 import 'package:movies_app/features/home/presentation/widgets/search_widget.dart';
 
@@ -23,7 +24,7 @@ class HomeView extends StatelessWidget {
             homeDataSource: HomeDataSourceImpl(apiService: ApiService()),
           ),
         ),
-      )..getPopularMovies(),
+      )..getPopularMovies(page: 1),
       child: Scaffold(
         body: SafeArea(
           child: SizedBox(
@@ -55,6 +56,11 @@ class HomeView extends StatelessWidget {
                     child: SizedBox(height: 20.h),
                   ),
                   const PopularMoviesList(),
+                  const SliverToBoxAdapter(
+                    child: PaginationWidget(
+                      totalPages: 500,
+                    ),
+                  ),
                 ],
               ),
             ),

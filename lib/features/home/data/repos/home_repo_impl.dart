@@ -11,9 +11,11 @@ class HomeRepoImpl implements HomeRepo {
 
   HomeRepoImpl({required this.homeDataSource});
   @override
-  Future<Either<Failures, List<MovieEntity>>> getPopularMovies() async {
+  Future<Either<Failures, List<MovieEntity>>> getPopularMovies({
+    required int page,
+  }) async {
     try {
-      final res = await homeDataSource.getPopularMovies();
+      final res = await homeDataSource.getPopularMovies(page: page);
       return Right(res);
     } catch (e) {
       if (e is DioException) {

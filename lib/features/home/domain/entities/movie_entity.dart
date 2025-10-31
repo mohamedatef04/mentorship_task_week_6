@@ -14,4 +14,15 @@ class MovieEntity {
     required this.movieVoteAverage,
     required this.movieVoteCount,
   });
+
+  factory MovieEntity.placeHolder() {
+    return MovieEntity(
+      movieId: 0,
+      movieImg: 'holder holder holder',
+      movieName: 'holder holder',
+      movieReleaseDate: 'holder ',
+      movieVoteAverage: 0.0,
+      movieVoteCount: 0,
+    );
+  }
 }
