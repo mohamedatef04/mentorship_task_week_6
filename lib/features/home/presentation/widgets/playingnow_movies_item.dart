@@ -1,6 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/constants/api_constants.dart';
 import 'package:movies_app/core/utils/app_colors.dart';
 import 'package:movies_app/core/utils/app_text_styles.dart';
 import 'package:movies_app/core/utils/assets.dart';
@@ -39,18 +39,23 @@ class PopularMoviesItem extends StatelessWidget {
             children: [
               Expanded(
                 flex: 2,
-                child: Container(
-                  width: 140,
-                  height: 190,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        '${ApiConstants.imagePath}${movieEntity.movieImg}',
+                child: CachedNetworkImage(
+                  imageUrl: movieEntity.movieImg,
+                  imageBuilder: (context, imageProvider) => Container(
+                    width: 140.w,
+                    height: 190.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      image: DecorationImage(
+                        image: imageProvider,
+                        fit: BoxFit.fill,
                       ),
-                      fit: BoxFit.fill,
                     ),
                   ),
+                  placeholder: (context, url) =>
+                      const Center(child: CircularProgressIndicator()),
+                  errorWidget: (context, url, error) =>
+                      const Center(child: Icon(Icons.error)),
                 ),
               ),
               Expanded(

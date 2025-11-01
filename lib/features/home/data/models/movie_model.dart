@@ -58,9 +58,9 @@ class MovieModel extends MovieEntity {
     this.voteCount,
   }) : super(
          movieId: id ?? 0,
-         movieImg:
-             posterPath ??
-             '${ApiConstants.imagePath}/7JzOmJ1fIU43I3gLHYsY8UzNzjG.jpg',
+         movieImg: posterPath != null
+             ? '${ApiConstants.imagePath}$posterPath'
+             : '${ApiConstants.imagePath}/7JzOmJ1fIU43I3gLHYsY8UzNzjG.jpg',
          movieName: title ?? '',
          movieReleaseDate: releaseDate ?? '',
          movieVoteAverage: voteAverage ?? 0.0,

@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:movies_app/core/cubits/change_mode_cubit.dart';
+import 'package:movies_app/features/home/data/models/movie_hive_model.dart';
 import 'package:movies_app/features/splash/presentation/views/splash_view.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(MovieHiveModelAdapter());
+  await Hive.openBox('moviesBox');
   runApp(const MoviesApp());
 }
 
