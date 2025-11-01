@@ -1,21 +1,30 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/utils/app_colors.dart';
 import 'package:movies_app/core/utils/app_text_styles.dart';
 import 'package:movies_app/core/utils/assets.dart';
+import 'package:movies_app/features/home/domain/entities/movie_entity.dart';
 import 'package:movies_app/features/home/presentation/views/movie_details_view.dart';
 
 class PopularMoviesItem extends StatelessWidget {
   const PopularMoviesItem({
     super.key,
+    required this.movieEntity,
   });
+
+  final MovieEntity movieEntity;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => const MovieDetailsView()),
+          MaterialPageRoute(
+            builder: (context) => MovieDetailsView(
+              movieId: movieEntity.movieId,
+            ),
+          ),
         );
       },
       child: SizedBox(
@@ -25,30 +34,38 @@ class PopularMoviesItem extends StatelessWidget {
             color: Theme.of(context).colorScheme.primary,
           ),
           child: Row(
-            spacing: 10,
+            spacing: 20,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Expanded(
                 flex: 2,
-                child: Container(
-                  width: 140,
-                  height: 190,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
-                    image: const DecorationImage(
-                      image: AssetImage(Assets.imagesImage),
-                      fit: BoxFit.fill,
+                child: CachedNetworkImage(
+                  imageUrl: movieEntity.movieImg,
+                  imageBuilder: (context, imageProvider) => Container(
+                    width: 140.w,
+                    height: 190.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      image: DecorationImage(
+                        image: imageProvider,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
+                  placeholder: (context, url) =>
+                      const Center(child: CircularProgressIndicator()),
+                  errorWidget: (context, url, error) =>
+                      const Center(child: Icon(Icons.error)),
                 ),
               ),
               Expanded(
                 flex: 3,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   spacing: 5,
                   children: [
                     Text(
-                      'The Shawshank Redemption',
+                      movieEntity.movieName,
                       style: AppTextStyles.semiBold16(context),
                       maxLines: 2,
                     ),
@@ -56,7 +73,7 @@ class PopularMoviesItem extends StatelessWidget {
                       children: [
                         Image.asset(Assets.imagesCalendar, width: 20.w),
                         Text(
-                          '2022',
+                          movieEntity.movieReleaseDate,
                           style: AppTextStyles.medium12(context),
                         ),
                       ],
@@ -69,7 +86,16 @@ class PopularMoviesItem extends StatelessWidget {
                           size: 20.w,
                         ),
                         Text(
-                          '1888',
+                          movieEntity.movieVoteCount.toString(),
+                          style: AppTextStyles.medium12(context),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Image.asset(Assets.imagesStar, width: 20.w),
+                        Text(
+                          movieEntity.movieVoteAverage.toString(),
                           style: AppTextStyles.medium12(context),
                         ),
                       ],
